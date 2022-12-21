@@ -1,0 +1,290 @@
+using System;
+using System.IO;
+using System.Threading;
+namespace cos
+{
+    class Program
+    {
+
+        static void start()
+        {
+
+            int sekundy = 1;
+            int minuty = 0;
+            int godziny = 0;
+            DateTime data1;
+
+            Console.Clear();
+            data1 = DateTime.Now;
+            do
+            {
+                while (!Console.KeyAvailable)
+                {
+                    if (minuty <= 0 && godziny <= 0)
+                    {
+
+                        Console.WriteLine("Uplynelo " + sekundy + " sekund.");
+                        Console.WriteLine("Nacisnije ESC aby zakonczyc");
+
+
+
+                        Thread.Sleep(970);
+                        Console.Clear();
+                        sekundy++;
+                        if (sekundy == 59)
+                        {
+                            sekundy = 0;
+                            minuty++;
+
+                        }
+                    }
+                    if (minuty > 0 && godziny <= 0)
+                    {
+
+                        Console.WriteLine("Uplynelo " + minuty + " minut " + sekundy + " sekund.");
+                        Console.WriteLine("Nacisnije ESC aby zakonczyc");
+                        Thread.Sleep(970);
+                        sekundy++;
+                        if (sekundy == 59)
+                        {
+                            sekundy = 0;
+                            minuty++;
+                        }
+                        Console.Clear();
+                        if (minuty == 59)
+                        {
+                            godziny++;
+                            minuty = 0;
+
+                        }
+
+                    }
+                    if (godziny > 0)
+                    {
+                        Console.WriteLine("Uplynelo " + godziny + " godzin " + minuty + " minut " + sekundy + " sekund.");
+                        Console.WriteLine("Nacisnije ESC aby zakonczyc");
+                        Thread.Sleep(970);
+                        Console.Clear();
+                        sekundy++;
+                        if (sekundy == 59)
+                        {
+                            sekundy = 0;
+                            minuty++;
+
+
+                        }
+                        if (minuty == 59)
+                        {
+                            minuty = 0;
+                            godziny++;
+
+                        }
+                    }
+
+                }
+            } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
+            DateTime data2 = DateTime.Now;
+            Console.Clear();
+            Console.WriteLine("Gdzie chcesz zapisac swoj czas");
+            Console.WriteLine("1.Nauka");
+            Console.WriteLine("2.Gra");
+            int wybor = int.Parse(Console.ReadLine());
+            string zapis = "fs";
+            if (wybor == 1)
+            {
+                zapis = "Nauka";
+            }
+            if (wybor == 2)
+            {
+                zapis = "Gra";
+            }
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Zapisano w {0}", zapis);
+            Console.ResetColor();
+            zapis = zapis.ToLower();
+            zapis += ".txt";
+            if (godziny == 0 || minuty == 0)
+            {
+                string[] czas = new string[1];
+                czas[0] = "start: " + data1 + " koniec: " + data2 + " ||" + sekundy + " sekund";
+                File.AppendAllLines(zapis, czas);
+
+            }
+            if (godziny == 0 && minuty > 0)
+            {
+                string[] czas = new string[1];
+                czas[0] = "start: " + data1 + " koniec: " + data2 + " ||" + minuty + " minut " + sekundy + " sekund";
+                File.AppendAllLines(zapis, czas);
+            }
+            if (godziny > 0)
+            {
+                string[] czas = new string[1];
+                czas[0] = "start: " + data1 + " koniec: " + data2 + " ||" + godziny + " godzin " + minuty + " minut " + sekundy + " sekund";
+                File.AppendAllLines(zapis, czas);
+            }
+
+            Console.WriteLine("Nacisnij klawisz aby kontynuowac");
+            Console.ReadLine();
+            Console.Clear();
+
+
+
+
+        }
+        static void odczyt()
+        {
+            Console.Clear();
+            Console.WriteLine("Co chcesz odczytac?: ");
+            Console.WriteLine("1.Nauka");
+            Console.WriteLine("2.Gra");
+            int wybor = int.Parse(Console.ReadLine());
+            Console.Clear();
+            switch (wybor)
+            {
+                case 1:
+                    {
+                        odczytthen(wybor); 
+                    }
+                    break;
+                case 2:
+                    {
+                        odczytthen(wybor);
+                    }
+                    break;
+            }
+
+        }
+        static void odczytthen(int wybor2)
+        {
+            Console.WriteLine("1.Odczyt calosci");
+            Console.WriteLine("2.Odczyt z konkretnego dnia");
+            int wybor = int.Parse(Console.ReadLine());
+            Console.Clear();
+            string nazwa="fsd";
+            if(wybor2==1)
+            {
+                 nazwa = "nauka.txt";
+            }
+            else if(wybor2==2)
+            {
+                 nazwa = "gra.txt";
+            }
+            switch(wybor)
+            {
+                case 1:
+                    {
+
+                        string[] lines = File.ReadAllLines(nazwa);
+                        int dlugosc = lines.Length;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Znaleziono {0} wynikow", dlugosc);
+                        foreach (var linia in lines)
+                        {
+
+                            Console.WriteLine(linia);
+                        }
+                        Console.ResetColor();
+
+                        Console.WriteLine("Nacisnij klawisz aby kontynuowac");
+                        Console.ReadLine();
+                        Console.Clear();
+                    }
+                    break;
+                case 2:
+                    {
+                        int wybor3 = odczytname();
+                        if (wybor3 == 1)
+                        {
+                            Console.Clear();
+                            Console.Write("Podaj date (dzien.miesiac.rok): ");
+                            string data = Console.ReadLine();
+                            string[] lines = File.ReadAllLines(nazwa);
+                            int dlugosc = lines.Length;
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            for (int i = 0; i < dlugosc; i++)
+                            {
+                                int place = lines[i].IndexOf(data);
+                                if (place >= 0)
+                                {
+                                    Console.WriteLine(lines[i]);
+                                }
+                                else if (place < 0)
+                                {
+
+                                }
+                            }
+                            Console.ResetColor();
+                            Console.ReadLine();
+                            Console.Clear();
+                        }
+                        if(wybor3==2)
+                        {
+                            Console.Clear();
+                            Console.Write("Podaj date (nr.dnia): ");
+                            string data = Console.ReadLine();
+                            string[] lines = File.ReadAllLines(nazwa);
+                            int dlugosc = lines.Length;
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            for (int i = 0; i < dlugosc; i++)
+                            {
+                                int place = lines[i].IndexOf(data);
+                                if (place >= 0)
+                                {
+                                    Console.WriteLine(lines[i]);
+                                }
+                                else if (place < 0)
+                                {
+
+                                }
+                            }
+                            Console.ResetColor();
+                            Console.ReadLine();
+                            Console.Clear();
+                        }
+                    }
+                    break;
+            }
+        }
+        static int odczytname()
+        {
+            Console.WriteLine("1.Odczyt po (dzien.miesiac.rok)");
+            Console.WriteLine("2.Odczyt po (godzina) ");
+            int wybor = int.Parse(Console.ReadLine());
+            return wybor;
+        }
+        static void menu()
+        {
+            while (true)
+            {
+
+                Console.WriteLine("1.Odliczanie czasu i zapis");
+                Console.WriteLine("2.Odczyt");
+                int wybor = int.Parse(Console.ReadLine());
+                switch (wybor)
+                {
+                    case 1:
+                        {
+                            Program.start();
+                        }
+                        break;
+                    case 2:
+                        {
+
+                            Program.odczyt();
+                        }
+                        break;
+                }
+            }
+        }
+
+        public static void Main(string[] args)
+        {
+            Program.menu();
+
+
+        }
+    }
+}
