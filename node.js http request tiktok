@@ -1,0 +1,138 @@
+//let options ={
+   // method:'GET',
+   // headers:{
+        //'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36',
+        //'Host': 'tiktok.com:13.224.68.95',
+    //}
+//}
+
+//const { request } = require("express");
+
+
+
+
+////let fetchRes = fetch("https://www.tiktok.com/@madeit103",options);
+//fetchRes.then(res=>res.text()).then(d=>{
+ //   console.log(d)
+//})
+
+function check(nick,number)
+{
+var XMLHttpRequest = require('xhr2');
+
+const xhr = new XMLHttpRequest();
+//const Http = new XMLHttpRequest();
+const url='https://www.tiktok.com/@'+nick;
+xhr.open("GET", url);
+
+//xhr.setRequestHeader("host", "tiktok.com");
+xhr._restrictedHeaders.cookie = false;
+xhr._restrictedHeaders.connect =false;
+
+xhr.setRequestHeader('connect', 'keep-alive');
+xhr.setRequestHeader("Accept", "*/*");
+//xhr.setRequestHeader("Connection","Keep-alive");
+xhr.setRequestHeader("User-agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36");
+xhr.setRequestHeader("Content-Type","text/html; charset=utf-8");
+//xhr.setRequestHeader("Cookie","_abck=4BAE062E4B07A01595C5331894C1BCB4~-1~YAAQXnZNaLiJyhSFAQAA982/VAkrMPMtu7+yOhEpxlfkpQ80aEIIwxTEoT6NCMkkhe2fs2ul2Ug4rzgwCyWkT1YxGxR19C7i5e5bGb8kKx9I/sy8epnu3FtWHx3Sd7RgGBWLR2dBdKW2tHV0xZVEult1xXFdvOplum+uOG/tsnqOFTrVkgCOiLgRTMvAXgtJ/25CWccoht04ekFXFvdlAL/0yWYTyoln/USM7UtTJX2yu3N8f5+CxzJxdcKcFcTy98zaGGEMM4NggidDsCT6MVM7JrFH42EW0npuMDdIOMUDFUsMzuS7Qzeihi3IbjO+Vzkpk11467IpPrlRmo+5uRBykJfIeqHOE7gDGQDHkD5thPrc1TN+UGuHeBg=~-1~-1~-1; Path=/; Domain=tiktok.com; Secure; Expires=Wed, 27 Dec 2023 18:02:14 GMT;");
+//xhr.setRequestHeader("Cookie","ak_bmsc=45762525D7EA4B4FAA2EC80501D0971D~000000000000000000000000000000~YAAQXnZNaLmJyhSFAQAA982/VBJRn4/qeV41kgehyzthBsGIE5+OJJawdliQKhtP4Zuu31SzLxlGx67hTs3+/Q/0fXY/++Nq42/ezQ+R8LDVPj2C/M8Zn12dcvTyKjRirAnfjS/P+afUsQ1zIsHTC2pY5JhvHSU2qO1e/GVAP/7hK+xxL/iLOdFdFEkorW9oJZandBgruawi3CpX0chR1cqiz//FgkGnkTn7B+RN0uGrc6DlnVYauIgIyrqISiAYS7mV2UYmTqxm2+MT3luNb0FHobGn4GlUPovEvHdXmwaxbhpK8jd8zRAn1sDfWihxPUyalz+roJhZrnhEdTaDKHuExNZM3FvBA/kZB416g2wiJyRn4g7QxX0bkZA=; Path=/; Domain=tiktok.com; HttpOnly; Expires=Tue, 27 Dec 2022 20:02:14 GMT;");
+//xhr.setRequestHeader("Cookie","bm_sz=46388C4284D7EDE281E9B9EE5B9B64F9~YAAQXnZNaLuJyhSFAQAA982/VBLhYGFYRcP+lSsH+nKDbqQGv6AtFVmhHEQFbDCElUdQK6wd4EblbzC/WrzdEODjYxvILrZP9jqPL40kouJbwg9GdqhZsNNGAcYri7Zah/kR4xaaAxR5gi4qG+znU0yIB4fY451NlXMlznWw1h2rtT1+KvWW2+mkKzuA7rw/YqVdt8XKntLEEKg4sB+/3V9XNqxrMk83zn7x5uzon3Bw/R5SXkt5OnG4SwVeEsFjFvH/nd+9UvGP+hgcBwcNmIRRZy9wkHtpwTDuHQzMWYv/h5Q=~4468789~3227973; Path=/; Domain=tiktok.com; Expires=Tue, 27 Dec 2022 22:02:14 GMT;");
+//xhr.setRequestHeader("Cookie","msToken=QKR5D2G1EhbYF8ervxIGnykMbNpqax6HJ8kZOmcEcoSWZboArl6yycQqbVcbfjJYeNoxvYXk0YqppGgp5TULkqRG6hzd7PI4bYIgkCtRQAwoAcT0nJ4W6vs=; Path=/; Domain=tiktok.com; Secure; Expires=Fri, 06 Jan 2023 18:02:14 GMT;");
+//xhr.setRequestHeader("Cookie","tt_csrf_token=jV49eyr1-MosL8BMfmgC7e44UAZwBAZHp02A; Path=/; Domain=tiktok.com; Secure; HttpOnly;")
+//xhr.setRequestHeader("Cookie","s_v_web_id=verify_lc6jcnmw_7PYQhx24_mnSR_4jkO_8Auj_rObSrkbzVEY9; Path=/; Secure; Expires=Mon, 23 Oct 2023 18:02:14 GMT;");
+xhr.setRequestHeader("Cookie","_abck=4BAE062E4B07A01595C5331894C1BCB4~-1~YAAQXnZNaLiJyhSFAQAA982/VAkrMPMtu7+yOhEpxlfkpQ80aEIIwxTEoT6NCMkkhe2fs2ul2Ug4rzgwCyWkT1YxGxR19C7i5e5bGb8kKx9I/sy8epnu3FtWHx3Sd7RgGBWLR2dBdKW2tHV0xZVEult1xXFdvOplum+uOG/tsnqOFTrVkgCOiLgRTMvAXgtJ/25CWccoht04ekFXFvdlAL/0yWYTyoln/USM7UtTJX2yu3N8f5+CxzJxdcKcFcTy98zaGGEMM4NggidDsCT6MVM7JrFH42EW0npuMDdIOMUDFUsMzuS7Qzeihi3IbjO+Vzkpk11467IpPrlRmo+5uRBykJfIeqHOE7gDGQDHkD5thPrc1TN+UGuHeBg=~-1~-1~-1; ak_bmsc=45762525D7EA4B4FAA2EC80501D0971D~000000000000000000000000000000~YAAQb3ZNaESx0xWFAQAAOAnKVBLVEH/sjc/5WEdT//QfLytqKyFFmY0ThyyxZNVSKqcke2X+OnyFo8jHWT+SbMY3dMQZt27Jl3kdsXTsJE+Mzrf83Em9usQJWHWRqUulS+DTqDcRWmO7OY6z3tEntuZHhQ2AE96NZPixVnXsbujbHNrpuB40TtToHyDSNPXyeJOIK6Yeg5XDAtxce7od10ADkGUs4Yc48tJ3WZdBVf6+UoWbrfk8D829T0jQ19Cde9ohTuNvsVW9eQT3xKmoZ5XLic4h9GYMa7hqYHtF4HhA4zFyzbHB2m9rav1oWpj2KctYnb6gazlwiPOsc3ZtfCJRwshbMDbaN2AzoRoHKjcBZK3peEYTTBBtt7Vs3AulA1U0WURejSm9qQ097eCFKeVkKSygpQ06uvhX; bm_mi=D8242954D43598B180ADD7C2FC2678B0~YAAQZHZNaEmW2BaFAQAALdfIVBIJoUgnz4CxMY8WrAcDMpdsxcEeAbe0FvrpzgBMhwBnv6hufTlSiFz0bl4E+o8JXlLnhoweFYUm0PzdVirZSSO8TFu64JmCiuLX0g+mn3MSEdJH1Ju2KCtz1pXCzcsOcDVPP4SgRv9o+xKHTySK8O6+Neq/BEwEzI3CwsetP/TCvogh4tlg4kx4TMP4fE4EoQZr5WZpT/J+35Ho+XKQQ9gkrqVL9ZXDhPfCvbh0EjJIqwTvFo5dWFzfqmPskscTAyF8l4J5HzktZ5EX5/Grbo6WBdzBijtxDISv/yoIbXoc5/he/Hg=~1; bm_sv=838C0F2BD5F57D3BB0440EDA71F040B2~YAAQZHZNaEqW2BaFAQAALdfIVBJNhYSIWTOyCX/grJJqrvU2TBMV3KfCQGe2cSJzIt9p2hqKl/LdwI4bGZG6uFy8QpB5uqcurowuoSFLzqF1nzDaMTopGdHu00K/MiyB/DvUhUSHQlzxi3h1Dv1XsdsNOVih+i6XMqsnoagKaPUyYZcWnbsaz15YUzfDXRzUuTVAHI6qCFfzd+HFlPdI8bgIcDlh22+AT8Zco4hiTtxKXJd4zYqDexpODAw3ondw~1; bm_sz=46388C4284D7EDE281E9B9EE5B9B64F9~YAAQXnZNaLuJyhSFAQAA982/VBLhYGFYRcP+lSsH+nKDbqQGv6AtFVmhHEQFbDCElUdQK6wd4EblbzC/WrzdEODjYxvILrZP9jqPL40kouJbwg9GdqhZsNNGAcYri7Zah/kR4xaaAxR5gi4qG+znU0yIB4fY451NlXMlznWw1h2rtT1+KvWW2+mkKzuA7rw/YqVdt8XKntLEEKg4sB+/3V9XNqxrMk83zn7x5uzon3Bw/R5SXkt5OnG4SwVeEsFjFvH/nd+9UvGP+hgcBwcNmIRRZy9wkHtpwTDuHQzMWYv/h5Q=~4468789~3227973; msToken=8OHwwJV_QsxZRCOu135Lxo_jq3HHRuo0RqmGf6TpQrNOtocVQT6G0WzDCoZHiqYxkvlCfdxkO028IzJHBpf_ESZ6bk8i11JFkxGbiQWU23yCGiTCuUL7U0s=; tt_chain_token=LvwsiILO0aklRgYfXwh0CQ==; tt_csrf_token=jV49eyr1-MosL8BMfmgC7e44UAZwBAZHp02A; ttwid=1%7CpSdKVc6puXJCwxQD9cjkrK9H7lgXhQDg5ZdDyNc5lII%7C1672164726%7C6003344bc20080c7eff1b5c63929cd1e2b666d44c41fe7de92e297fc6063b9ad; s_v_web_id=verify_lc6jcnmw_7PYQhx24_mnSR_4jkO_8Auj_rObSrkbzVEY9");
+xhr.setRequestHeader("Cookie","s_v_web_id=verify_lc6jcnmw_7PYQhx24_mnSR_4jkO_8Auj_rObSrkbzVEY9; Path=/; Secure; Expires=Mon, 23 Oct 2023 18:11:58 GMT;");
+//xhr.setRequestHeader("host","fdsa");
+xhr.setRequestHeader("Content-Encoding","gzip, deflate, br");
+xhr.setRequestHeader("Accept-Language","pl-PL,pl;q=0.9");
+xhr.setRequestHeader("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+xhr.setRequestHeader("Authority","www.youtube.com");
+xhr.connect='keep-alive';
+xhr.send();
+
+
+xhr.onreadystatechange = (e) => {
+
+  let save="";  
+   save = xhr.responseText;
+  // console.log(save);
+  //xhr.responeText cos nie dziala tutaj ciagle
+if(save==xhr.responseText)
+{
+if(save.length>70)
+{
+  //console.log("html.response.length "+save.length+" nick: "+nick);
+ smth(save,number,nick);
+
+
+}
+else if(save.length<70)
+  {
+    //less(number,nick);
+  }
+xhr.close;
+}
+}
+}
+
+
+
+
+function less(number,nick)
+{
+  console.log(number+" Nie mozna nawiazac polaczenia nick: "+nick);
+}
+function smth (text,number,nick)
+{
+
+ let error = text.search(nick)
+  
+  if(error<500)
+  {
+    //console.log(number+". Na tiktoku istnieje taki uzytkownik "+nick);
+  }
+ else
+ {
+  console.log(number+". Na tiktoku nie istnieje taki uzytkownik "+nick);
+ }
+
+}
+  
+
+
+
+
+let tabcheck = [
+
+  "0yx_",
+  "_zy.",
+  "x_y_",
+  "x.x0",
+  "_yvy",
+  "vzzw",
+  ".xxv",
+  "_0w.",
+  "yw0x",
+  "xwy_",
+  "yyx.",
+
+
+]
+
+
+
+
+
+for (i=0;i<tabcheck.length;i++)
+{
+//delay pomiedzy http request dla kolejnych nickow z tablicy teraz 1000 milisekund
+setTimeout(check,i*1500,tabcheck[i],i);
+
+
+
+
+}
+
+
+
+
