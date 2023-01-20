@@ -125,7 +125,7 @@ let tabcheck = [
 
 for (i=0;i<tabcheck.length;i++)
 {
-//delay pomiedzy http request dla kolejnych nickow z tablicy teraz 1000 milisekund
+//delay pomiedzy http request dla kolejnych nickow z tablicy teraz 1500 milisekund
 setTimeout(check,i*1500,tabcheck[i],i);
 
 
